@@ -5,7 +5,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Web;
 
-namespace Bids.Models
+namespace Bids.DAL
 {
     public class GenericRepository<TEntity> where TEntity :class
     {

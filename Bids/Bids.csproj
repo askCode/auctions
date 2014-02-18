@@ -126,7 +126,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Models\GenericRepository.cs" />
+    <Compile Include="DAL\GenericRepository.cs" />
     <Compile Include="Controllers\MembersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -136,13 +136,13 @@
       <DependentUpon>201402180951025_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\AuctionContext.cs" />
+    <Compile Include="DAL\AuctionContext.cs" />
     <Compile Include="Models\Bid.cs" />
-    <Compile Include="Models\IMemberRepository.cs" />
+    <Compile Include="DAL\IMemberRepository.cs" />
     <Compile Include="Models\Item.cs" />
     <Compile Include="Models\Member.cs" />
-    <Compile Include="Models\MemberRepository.cs" />
-    <Compile Include="Models\UnitOfWork.cs" />
+    <Compile Include="DAL\MemberRepository.cs" />
+    <Compile Include="DAL\UnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -232,6 +232,7 @@
     <Content Include="Views\Members\Index.cshtml" />
     <Content Include="Views\Members\Create.cshtml" />
     <Content Include="Views\Members\Edit.cshtml" />
+    <Content Include="Views\Members\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

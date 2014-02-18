@@ -5,14 +5,14 @@ namespace Bids.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<Bids.Models.AuctionContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<Bids.DAL.AuctionContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(Bids.Models.AuctionContext context)
+        protected override void Seed(Bids.DAL.AuctionContext context)
         {
             //  This method will be called after migrating to the latest version.
 

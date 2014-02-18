@@ -1,9 +1,10 @@
-﻿using System;
+﻿using Bids.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Bids.Models
+namespace Bids.DAL
 {
     public class MemberRepository :IMemberRepository
     {

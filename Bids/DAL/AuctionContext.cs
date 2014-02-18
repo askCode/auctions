@@ -1,11 +1,12 @@
-﻿using System;
+﻿using Bids.Models;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Linq;
 using System.Web;
 
-namespace Bids.Models
+namespace Bids.DAL
 {
     public class AuctionContext :DbContext
     {

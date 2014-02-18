@@ -1,4 +1,5 @@
-﻿using Bids.Models;
+﻿using Bids.DAL;
+using Bids.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,12 +17,17 @@ namespace Bids.Controllers
         
         //
         // GET: /Members/
-
+        [HttpGet]
         public ActionResult Index()
         {
             //return View(db.Members.ToList());
             //return View(memberRepository.GetMembers());
             return View(unitOfWork.MemberRepository.Get());
+        }
+        [HttpGet]
+        public ViewResult Details(int id)
+        {
+            return View(unitOfWork.MemberRepository.GetById(id));
         }
 
         [HttpGet]
@@ -71,7 +77,9 @@ namespace Bids.Controllers
 
         protected override void Dispose(bool disposing)
         {
+            //db.Dispose();
             //memberRepository.Dispose();
+            //To make sure that database connections are properly closed and the resources they hold freed up
             unitOfWork.Dispose();
             base.Dispose(disposing);
         }
