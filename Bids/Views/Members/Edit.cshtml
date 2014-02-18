@@ -1,0 +1,15 @@
+﻿@model Bids.Models.Member
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+@using (Html.BeginForm("Edit", "Members", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(m => m.MemberID)
+    @Html.LabelFor(m => m.LoginName)
+    @Html.EditorFor(m=> m.LoginName)
+    <input type="submit" value="Add Member" />
+}

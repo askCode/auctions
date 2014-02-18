@@ -1,0 +1,14 @@
+﻿@model IEnumerable<Bids.Models.Member>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<ul>
+@foreach (Bids.Models.Member m in Model)
+{
+    <li>@m.LoginName @Html.ActionLink("Edit", "Edit", new { id = m.MemberID }) </li>
+}
+    </ul>
+@Html.ActionLink("Create", "Create")

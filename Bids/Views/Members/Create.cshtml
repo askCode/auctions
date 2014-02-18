@@ -1,0 +1,15 @@
+﻿@model Bids.Models.Member
+
+@{
+    ViewBag.Title = "New";
+}
+
+<h2>Create</h2>
+@using (Html.BeginForm("Create", "Members", FormMethod.Post))
+{
+    @Html.LabelFor(m => m.LoginName)
+    @Html.EditorFor(m=> m.LoginName)
+    <input type="submit" value="Add Member" />
+}
+
+
