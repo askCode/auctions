@@ -11,18 +11,17 @@ namespace Bids.Controllers
     {
 
         //private AuctionContext db = new AuctionContext();
-        private IMemberRepository memberRepository;
-        public MembersController()
-        {
-            this.memberRepository = new MemberRepository(new AuctionContext());
-        }
+        //private IMemberRepository memberRepository;
+        private UnitOfWork unitOfWork = new UnitOfWork();
+        
         //
         // GET: /Members/
 
         public ActionResult Index()
         {
             //return View(db.Members.ToList());
-            return View(memberRepository.GetMembers());
+            //return View(memberRepository.GetMembers());
+            return View(unitOfWork.MemberRepository.Get());
         }
 
         [HttpGet]
@@ -38,8 +37,8 @@ namespace Bids.Controllers
             {
                 //db.Members.Add(member);
                 //db.SaveChanges();
-                memberRepository.InsertMember(member);
-                memberRepository.Save();
+                unitOfWork.MemberRepository.Insert(member);
+                unitOfWork.Save();
                 return RedirectToAction("Index");
             }
             return View(member); 
@@ -48,7 +47,8 @@ namespace Bids.Controllers
         public ActionResult Edit(int id)
         {
             //var member = db.Members.Find(id);
-            var member = memberRepository.GetMemberById(id);
+            //var member = memberRepository.GetMemberById(id);
+            var member = unitOfWork.MemberRepository.GetById(id);
             return View(member);
 
         }
@@ -60,8 +60,10 @@ namespace Bids.Controllers
             {
                 //db.Entry(member).State = System.Data.EntityState.Modified;
                 //db.SaveChanges();
-                memberRepository.UpdateMember(member);
-                memberRepository.Save();
+                //memberRepository.UpdateMember(member);
+                //memberRepository.Save();
+                unitOfWork.MemberRepository.Update(member);
+                unitOfWork.Save();
                 return RedirectToAction("Index");
             }
             return View(member); 
@@ -69,7 +71,8 @@ namespace Bids.Controllers
 
         protected override void Dispose(bool disposing)
         {
-            memberRepository.Dispose();
+            //memberRepository.Dispose();
+            unitOfWork.Dispose();
             base.Dispose(disposing);
         }
     }
