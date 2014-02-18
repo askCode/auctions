@@ -10,13 +10,19 @@ namespace Bids.Controllers
     public class MembersController : Controller
     {
 
-        private AuctionContext db = new AuctionContext();
+        //private AuctionContext db = new AuctionContext();
+        private IMemberRepository memberRepository;
+        public MembersController()
+        {
+            this.memberRepository = new MemberRepository(new AuctionContext());
+        }
         //
         // GET: /Members/
 
         public ActionResult Index()
         {
-            return View(db.Members.ToList());
+            //return View(db.Members.ToList());
+            return View(memberRepository.GetMembers());
         }
 
         [HttpGet]
@@ -30,8 +36,10 @@ namespace Bids.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Members.Add(member);
-                db.SaveChanges();
+                //db.Members.Add(member);
+                //db.SaveChanges();
+                memberRepository.InsertMember(member);
+                memberRepository.Save();
                 return RedirectToAction("Index");
             }
             return View(member); 
@@ -39,7 +47,8 @@ namespace Bids.Controllers
         [HttpGet]
         public ActionResult Edit(int id)
         {
-            var member = db.Members.Find(id);
+            //var member = db.Members.Find(id);
+            var member = memberRepository.GetMemberById(id);
             return View(member);
 
         }
@@ -49,12 +58,19 @@ namespace Bids.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(member).State = System.Data.EntityState.Modified;
-                db.SaveChanges();
+                //db.Entry(member).State = System.Data.EntityState.Modified;
+                //db.SaveChanges();
+                memberRepository.UpdateMember(member);
+                memberRepository.Save();
                 return RedirectToAction("Index");
             }
             return View(member); 
+        }
 
+        protected override void Dispose(bool disposing)
+        {
+            memberRepository.Dispose();
+            base.Dispose(disposing);
         }
     }
 }

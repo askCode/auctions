@@ -137,8 +137,10 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AuctionContext.cs" />
     <Compile Include="Models\Bid.cs" />
+    <Compile Include="Models\IMemberRepository.cs" />
     <Compile Include="Models\Item.cs" />
     <Compile Include="Models\Member.cs" />
+    <Compile Include="Models\MemberRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
