@@ -1,0 +1,13 @@
+﻿@model IEnumerable<Bids.Models.Item>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<ul>
+@foreach (Bids.Models.Item item in Model)
+{
+    <li>@item.Title - @item.Description - @item.AuctionEndDate</li>    
+}
+</ul>

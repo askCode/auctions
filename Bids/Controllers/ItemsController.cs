@@ -33,6 +33,7 @@ namespace Bids.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Create(Item item)
         {
             if (ModelState.IsValid)
@@ -49,7 +50,9 @@ namespace Bids.Controllers
         {
             return View(unitOfWork.ItemRepository.GetById(id));
         }
+
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Edit(Item item)
         {
             if (ModelState.IsValid)

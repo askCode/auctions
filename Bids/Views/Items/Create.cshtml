@@ -1,0 +1,25 @@
+﻿@model Bids.Models.Item
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+@using (Html.BeginForm("Create", "Items", FormMethod.Post))
+{
+    @Html.HiddenFor(m => m.ItemID)
+    @Html.AntiForgeryToken()
+    <p>
+        @Html.LabelFor(m => m.Title)
+        @Html.EditorFor(m => m.Title)
+    </p>
+    <p>
+        @Html.LabelFor(m => m.Description)
+        @Html.EditorFor(m => m.Description)
+    </p>
+    <p>
+        @Html.LabelFor(m => m.AuctionEndDate)
+        @Html.EditorFor(m => m.AuctionEndDate)
+    </p>
+    <input type="submit" value="Add Item" />
+}
