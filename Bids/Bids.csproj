@@ -137,6 +137,10 @@
     <Compile Include="Migrations\201402180951025_InitialCreate.Designer.cs">
       <DependentUpon>201402180951025_InitialCreate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201402201605399_ItemTitleAndDateRequired.cs" />
+    <Compile Include="Migrations\201402201605399_ItemTitleAndDateRequired.Designer.cs">
+      <DependentUpon>201402201605399_ItemTitleAndDateRequired.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="DAL\AuctionContext.cs" />
     <Compile Include="Models\Bid.cs" />
@@ -225,6 +229,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201402180951025_InitialCreate.resx">
       <DependentUpon>201402180951025_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201402201605399_ItemTitleAndDateRequired.resx">
+      <DependentUpon>201402201605399_ItemTitleAndDateRequired.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

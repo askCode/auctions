@@ -13,9 +13,10 @@
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="@Url.Action("Index", "Home")">Home</a></li>
-                <li><a href="@Url.Action("Index", "Members")">Members</a></li>
-                <li><a href="@Url.Action("Index", "Items")">Items</a></li>
+                @{var currentController = @ViewContext.RouteData.Values["Controller"].ToString();}
+                <li class="@(currentController == "Home"?"active":"")"><a href="@Url.Action("Index", "Home")">Home</a></li>
+                <li class="@(currentController == "Members"?"active":"")"><a href="@Url.Action("Index", "Members")">Members</a></li>
+                <li class="@(currentController == "Items"?"active":"")"><a href="@Url.Action("Index", "Items")">Items</a></li>
             </ul>
         </div>
     </div>

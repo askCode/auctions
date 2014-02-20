@@ -5,6 +5,7 @@
 }
 
 <h2>Create Item</h2>
+@Html.ValidationSummary()
 @using (Html.BeginForm("Create", "Items", FormMethod.Post, new { @class = "form-horizontal" }))
 {
     
