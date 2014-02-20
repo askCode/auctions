@@ -63,5 +63,20 @@ namespace Bids.Controllers
             }
             return View(item);
         }
+
+        [HttpPost]
+        public ActionResult AddBid(int itemID, decimal bidAmount)
+        {
+            var item = unitOfWork.ItemRepository.GetById(itemID);
+            var member = unitOfWork.MemberRepository.Get().First();
+            item.Bids.Add(new Bid { BidAmount = bidAmount, DatePlaced = DateTime.Now, Member = member });
+            unitOfWork.ItemRepository.Update(item);
+            unitOfWork.Save();
+
+
+            //return RedirectToAction("Index");
+            return RedirectToAction("Details", new { id=itemID});
+        }
+
     }
 }

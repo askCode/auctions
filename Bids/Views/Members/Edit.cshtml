@@ -4,12 +4,12 @@
     ViewBag.Title = "Edit";
 }
 
-<h2>Edit</h2>
-@using (Html.BeginForm("Edit", "Members", FormMethod.Post))
+<h2>Edit Member</h2>
+@using (Html.BeginForm("Edit", "Members", FormMethod.Post, new { @class = "form-horizontal" }))
 {
     @Html.AntiForgeryToken()
     @Html.HiddenFor(m => m.MemberID)
-    @Html.LabelFor(m => m.LoginName)
-    @Html.EditorFor(m=> m.LoginName)
-    <input type="submit" value="Add Member" />
+    @Html.Partial("Fields",Model)
+
+    <input type="submit" value="Save Member" class="btn btn-primary"/>
 }

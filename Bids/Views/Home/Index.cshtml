@@ -1,0 +1,13 @@
+﻿@model Bids.Models.Item
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+@using (Html.BeginForm()){
+<p>
+    @Html.DropDownList("Member", new SelectList(ViewBag.Members, "MemberID", "LoginName"), new { @class="form-control"})
+</p>
+    <input type="submit" value="Select" class="btn btn-primary"/>
+}

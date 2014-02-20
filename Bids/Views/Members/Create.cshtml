@@ -4,12 +4,11 @@
     ViewBag.Title = "New";
 }
 
-<h2>Create</h2>
-@using (Html.BeginForm("Create", "Members", FormMethod.Post))
+<h2>Create Member</h2>
+@using (Html.BeginForm("Create", "Members", FormMethod.Post, new { @class = "form-horizontal" }))
 {
-    @Html.LabelFor(m => m.LoginName)
-    @Html.EditorFor(m=> m.LoginName)
-    <input type="submit" value="Add Member" />
+    @Html.Partial("Fields")
+    <input type="submit" value="Add Member" class="btn btn-primary"/>
 }
 
 

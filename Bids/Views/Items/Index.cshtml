@@ -4,10 +4,21 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
-<ul>
-@foreach (Bids.Models.Item item in Model)
-{
-    <li>@item.Title - @item.Description - @item.AuctionEndDate</li>    
-}
-</ul>
+<h2>Items Index</h2>
+<div class="container-fluid">
+    @foreach (Bids.Models.Item item in Model)
+    {
+        <div class="row">
+            <div class="col-md-3">@item.Title </div>
+            <div class="col-md-3">@item.Description </div>
+            <div class="col-md-3">@item.AuctionEndDate </div>
+            <div class="col-md-3">
+                @Html.ActionLink("Edit", "Edit", new { id = item.ItemID }, new { @class="btn btn-default"})
+                @Html.ActionLink("Details", "Details", new { id = item.ItemID }, new { @class="btn btn-default"})
+
+            </div>
+        </div>
+    }
+</div>
+
+@Html.ActionLink("Create", "Create", null, new { @class="btn btn-primary"})

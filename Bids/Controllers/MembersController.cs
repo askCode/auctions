@@ -27,6 +27,7 @@ namespace Bids.Controllers
         [HttpGet]
         public ViewResult Details(int id)
         {
+            ViewBag.Bids = unitOfWork.BidRepository.Get(x => x.MemberID ==id);
             return View(unitOfWork.MemberRepository.GetById(id));
         }
 

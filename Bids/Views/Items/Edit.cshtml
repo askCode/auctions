@@ -5,22 +5,10 @@
 }
 
 <h2>Edit</h2>
-@using (Html.BeginForm("Edit", "Items", FormMethod.Post))
+@using (Html.BeginForm("Edit", "Items", FormMethod.Post, new { @class = "form-horizontal" }))
 {
-    @Html.HiddenFor(m => m.ItemID)
-    @Html.AntiForgeryToken()
-    <p>
-        @Html.LabelFor(m => m.Title)
-        @Html.EditorFor(m => m.Title)
-    </p>
-    <p>
-        @Html.LabelFor(m => m.Description)
-        @Html.EditorFor(m => m.Description)
-    </p>
-    <p>
-        @Html.LabelFor(m => m.AuctionEndDate)
-        @Html.EditorFor(m => m.AuctionEndDate)
-    </p>
-    <input type="submit" value="Save Item" />
+    @Html.Partial("Fields")
+
+    <input type="submit" value="Save Item" class="btn btn-primary"/>
 }
 

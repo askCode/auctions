@@ -1,22 +1,61 @@
 ﻿@model Bids.Models.Item
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Item Details";
 }
 
-<h2>Details</h2>
-<p>
-    @Html.LabelFor(m => m.Title)
-    @Html.DisplayFor(m => m.Title)
-</p>
-<p>
-    @Html.LabelFor(m => m.Description)
-    @Html.DisplayFor(m => m.Description)    
-</p>
-<p>
-    @Html.LabelFor(m => m.AuctionEndDate)
-    @Html.DisplayFor(m => m.AuctionEndDate)
-</p>
-<p>
-    Bids: @Model.Bids.Count()
-</p>
+<h2>Item Details</h2>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-2">
+            @Html.LabelFor(m => m.Title)
+        </div>
+        <div class="col-md-3">
+            @Html.DisplayFor(m => m.Title)
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-2">
+            @Html.LabelFor(m => m.Description)
+        </div>
+        <div class="col-md-3">
+            @Html.DisplayFor(m => m.Description)
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2">
+            @Html.LabelFor(m => m.AuctionEndDate)
+        </div>
+        <div class="col-md-3">
+            @Html.DisplayFor(m => m.AuctionEndDate)
+        </div>
+    </div>
+</div>
+<div>
+    <h3>Bids</h3>
+    @foreach (var bid in @Model.Bids)
+    {
+        <div class="row">
+            <div class="col-md-4">@bid.Member.LoginName</div>
+            <div class="col-md-4">@bid.BidAmount</div>
+            <div class="col-md-4">@bid.DatePlaced</div>
+        </div>
+    }
+</div>
+<div>
+    <h3>Add new Bid</h3>
+    @using (Html.BeginForm("AddBid", "Items", new {itemID=Model.ItemID},FormMethod.Post, new { @class = "form-horizontal well" }))
+    {
+        <div class="form-group">
+            @Html.Label("BidAmount", new { @class = "col-sm-2 control-label" })
+            <div class="col-sm-4">
+                @Html.TextBox("bidAmount", 0,  new { @class = "form-control" })
+            </div>
+        </div>
+@*
+    @Html.ActionLink("Add Bid", "AddBid", new { itemID = Model.ItemID }, new { @class = "btn btn-default", role = "button" })   
+    *@
+        <input type="submit" value="Add Bid" class="btn btn-primary" />
+    }
+</div>
