@@ -15,6 +15,8 @@ namespace Bids.Controllers
         public ActionResult Index()
         {
             ViewBag.Members = unitOfWork.MemberRepository.Get();
+            ViewBag.MyProducts = unitOfWork.ItemRepository.Get();
+            ViewBag.MyBids = unitOfWork.BidRepository.Get();
             return View();
         }
 

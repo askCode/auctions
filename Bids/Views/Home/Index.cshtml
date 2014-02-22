@@ -11,3 +11,9 @@
 </p>
     <input type="submit" value="Select" class="btn btn-primary"/>
 }
+
+<h3>My Products</h3>
+@Html.Partial("Products", ViewBag.MyProducts as IEnumerable<Bids.Models.Item>)
+
+<h3>My Bids</h3>
+@Html.Partial("Bids", ViewBag.MyBids as IEnumerable<Bids.Models.Bid>)

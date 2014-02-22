@@ -45,17 +45,5 @@
 </div>
 <div>
     <h3>Add new Bid</h3>
-    @using (Html.BeginForm("AddBid", "Items", new {itemID=Model.ItemID},FormMethod.Post, new { @class = "form-horizontal well" }))
-    {
-        <div class="form-group">
-            @Html.Label("BidAmount", new { @class = "col-sm-2 control-label" })
-            <div class="col-sm-4">
-                @Html.TextBox("bidAmount", 0,  new { @class = "form-control" })
-            </div>
-        </div>
-@*
-    @Html.ActionLink("Add Bid", "AddBid", new { itemID = Model.ItemID }, new { @class = "btn btn-default", role = "button" })   
-    *@
-        <input type="submit" value="Add Bid" class="btn btn-primary" />
-    }
+    @Html.Partial("AddBid", @Model)
 </div>
