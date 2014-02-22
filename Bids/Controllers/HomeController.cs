@@ -7,6 +7,7 @@ using System.Web.Mvc;
 
 namespace Bids.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
         //

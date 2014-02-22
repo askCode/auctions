@@ -19,5 +19,8 @@
                 <li class="@(currentController == "Items"?"active":"")"><a href="@Url.Action("Index", "Items")">Items</a></li>
             </ul>
         </div>
+        <section id="login">
+            @Html.Partial("_LoginPartial")
+        </section>
     </div>
 </nav>
