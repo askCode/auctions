@@ -1,0 +1,14 @@
+﻿@model IEnumerable<Bids.WebUI.Models.Bid>
+
+<div class="container">
+@foreach (Bids.WebUI.Models.Bid item in @Model)
+{
+    <div class="row">
+        <div class="col-md-2">@item.Item.Title</div>
+        <div class="col-md-2">@item.BidAmount</div>
+        <div class="col-md-2">@item.DatePlaced</div>
+        <div class="col-md-2">@Html.ActionLink("View", "Details", "Items", new { id = item.Item.ItemID }, null)</div>
+    </div>
+
+}
+</div>
