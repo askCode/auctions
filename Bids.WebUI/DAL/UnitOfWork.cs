@@ -6,16 +6,18 @@ using System.Web;
 
 namespace Bids.WebUI.DAL
 {
-    public class UnitOfWork : IDisposable
+
+    public class UnitOfWork : IDisposable, Bids.WebUI.DAL.IUnitOfWork
     {
+
         //private AuctionContext context = new AuctionContext();
         private UsersContext context = new UsersContext();
-        private GenericRepository<UserProfile> memberRepository;
-        private GenericRepository<Item> itemRepository;
-        private GenericRepository<Bid> bidRepository;
+        private IGenericRepository<UserProfile> memberRepository;
+        private IGenericRepository<Item> itemRepository;
+        private IGenericRepository<Bid> bidRepository;
 
 
-        public GenericRepository<Item> ItemRepository
+        public IGenericRepository<Item> ItemRepository
         {
             get
             {
@@ -28,7 +30,7 @@ namespace Bids.WebUI.DAL
             }
         }
 
-        public GenericRepository<Bid> BidRepository
+        public IGenericRepository<Bid> BidRepository
         {
             get
             {
@@ -42,7 +44,7 @@ namespace Bids.WebUI.DAL
         }
 
 
-        public GenericRepository<UserProfile> MemberRepository
+        public IGenericRepository<UserProfile> MemberRepository
         {
             get
             {

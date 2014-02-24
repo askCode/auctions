@@ -1,17 +1,34 @@
 ﻿using Bids.WebUI.DAL;
+using Bids.WebUI.Filters;
+using Bids.WebUI.Helpers;
 using Bids.WebUI.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using WebMatrix.WebData;
 
 namespace Bids.WebUI.Controllers
 {
     [Authorize]
+    [InitializeSimpleMembership]
     public class ItemsController : Controller
     {
-        private UnitOfWork unitOfWork = new UnitOfWork();
+        private IUnitOfWork unitOfWork;
+        private ISecurityHelper securityHelper;
+
+        public ItemsController()
+        {
+            unitOfWork = new UnitOfWork();
+            securityHelper = new SecurityHelper();
+        }
+
+        public ItemsController(IUnitOfWork UoW, ISecurityHelper sh)
+        {
+            unitOfWork = UoW;
+            securityHelper = sh;
+        }
 
         //
         // GET: /Items/        
@@ -30,26 +47,16 @@ namespace Bids.WebUI.Controllers
         [HttpGet]
         public ViewResult Create()
         {
-            UserProfile user;
-            //using (UsersContext db = new UsersContext())
-            //{
-            //    user = db.UserProfiles.FirstOrDefault(u => u.UserName.ToLower() == User.Identity.Name.ToLower());
+            //UserProfile user;            
+            //user = unitOfWork.MemberRepository.Get(u => u.UserName.ToLower() == User.Identity.Name.ToLower()).First();
 
-            //}
-            user = unitOfWork.MemberRepository.Get(u => u.UserName.ToLower() == User.Identity.Name.ToLower()).First();
-
-            return View(new Item { UserId = user.UserId });
+            return View(new Item { UserId = this.securityHelper.CurrentUserId });
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(Item item)
-        {
-            //using (UsersContext db = new UsersContext())
-            //{
-            //    UserProfile user = db.UserProfiles.FirstOrDefault(u => u.UserName.ToLower() == User.Identity.Name.ToLower());
-            //    item.Owner = user;
-            //}
+        {            
             if (ModelState.IsValid)
             {
                 unitOfWork.ItemRepository.Insert(item);
@@ -82,8 +89,12 @@ namespace Bids.WebUI.Controllers
         public ActionResult AddBid(int itemID, decimal bidAmount)
         {
             var item = unitOfWork.ItemRepository.GetById(itemID);
+            
+            //WebSecurity.CurrentUserId
+            //user = unitOfWork.MemberRepository.Get(u => u.UserName.ToLower() == User.Identity.Name.ToLower()).First();
+
             //var member = unitOfWork.MemberRepository.Get().First();
-            //item.Bids.Add(new Bid { BidAmount = bidAmount, DatePlaced = DateTime.Now, Member = member });
+            item.Bids.Add(new Bid { BidAmount = bidAmount, DatePlaced = DateTime.Now, UserID = this.securityHelper.CurrentUserId });
             unitOfWork.ItemRepository.Update(item);
             unitOfWork.Save();
 

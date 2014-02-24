@@ -8,7 +8,7 @@ using System.Web;
 
 namespace Bids.WebUI.DAL
 {
-    public class GenericRepository<TEntity> where TEntity :class
+    public class GenericRepository<TEntity> : Bids.WebUI.DAL.IGenericRepository<TEntity> where TEntity :class
     {
         //internal AuctionContext context;
         internal UsersContext context;
