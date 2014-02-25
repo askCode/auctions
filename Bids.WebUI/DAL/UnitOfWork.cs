@@ -10,8 +10,8 @@ namespace Bids.WebUI.DAL
     public class UnitOfWork : IDisposable, Bids.WebUI.DAL.IUnitOfWork
     {
 
-        //private AuctionContext context = new AuctionContext();
-        private UsersContext context = new UsersContext();
+        private AuctionContext context = new AuctionContext();
+        //private UsersContext context = new UsersContext();
         private IGenericRepository<UserProfile> memberRepository;
         private IGenericRepository<Item> itemRepository;
         private IGenericRepository<Bid> bidRepository;

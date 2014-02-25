@@ -10,6 +10,7 @@ using Microsoft.Web.WebPages.OAuth;
 using WebMatrix.WebData;
 using Bids.WebUI.Filters;
 using Bids.WebUI.Models;
+using Bids.WebUI.DAL;
 
 namespace Bids.WebUI.Controllers
 {
@@ -263,7 +264,8 @@ namespace Bids.WebUI.Controllers
             if (ModelState.IsValid)
             {
                 // Insert a new user into the database
-                using (UsersContext db = new UsersContext())
+                //using (UsersContext db = new UsersContext())
+                using (AuctionContext db = new AuctionContext())
                 {
                     UserProfile user = db.UserProfiles.FirstOrDefault(u => u.UserName.ToLower() == model.UserName.ToLower());
                     // Check if user already exists

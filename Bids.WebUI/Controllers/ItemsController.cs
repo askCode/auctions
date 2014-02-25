@@ -47,9 +47,6 @@ namespace Bids.WebUI.Controllers
         [HttpGet]
         public ViewResult Create()
         {
-            //UserProfile user;            
-            //user = unitOfWork.MemberRepository.Get(u => u.UserName.ToLower() == User.Identity.Name.ToLower()).First();
-
             return View(new Item { UserId = this.securityHelper.CurrentUserId });
         }
 
@@ -90,14 +87,9 @@ namespace Bids.WebUI.Controllers
         {
             var item = unitOfWork.ItemRepository.GetById(itemID);
             
-            //WebSecurity.CurrentUserId
-            //user = unitOfWork.MemberRepository.Get(u => u.UserName.ToLower() == User.Identity.Name.ToLower()).First();
-
-            //var member = unitOfWork.MemberRepository.Get().First();
             item.Bids.Add(new Bid { BidAmount = bidAmount, DatePlaced = DateTime.Now, UserID = this.securityHelper.CurrentUserId });
             unitOfWork.ItemRepository.Update(item);
             unitOfWork.Save();
-
 
             //return RedirectToAction("Index");
             return RedirectToAction("Details", new { id = itemID });

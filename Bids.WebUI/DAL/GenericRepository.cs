@@ -10,11 +10,12 @@ namespace Bids.WebUI.DAL
 {
     public class GenericRepository<TEntity> : Bids.WebUI.DAL.IGenericRepository<TEntity> where TEntity :class
     {
-        //internal AuctionContext context;
-        internal UsersContext context;
+        internal AuctionContext context;
+        //internal UsersContext context;
         internal DbSet<TEntity> dbSet;
         
-        public GenericRepository(UsersContext context)
+        //public GenericRepository(UsersContext context)
+        public GenericRepository(AuctionContext context)
         {
             this.context = context;
             this.dbSet = context.Set<TEntity>();

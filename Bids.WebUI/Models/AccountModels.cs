@@ -9,24 +9,25 @@ using System.Web.Security;
 
 namespace Bids.WebUI.Models
 {
-    public class UsersContext : DbContext
-    {
-        public UsersContext()
-            : base("AuctionContext")
-            //: base("DefaultConnection")
-        {
-        }
+    //public class UsersContext : DbContext
+    //{
+    //    public UsersContext()
+    //        : base("AuctionContext")
+    //        //: base("DefaultConnection")
+    //    {
+    //    }
 
-        public DbSet<UserProfile> UserProfiles { get; set; }
-        public DbSet<Item> Items { get; set; }
-        public DbSet<Bid> Bids { get; set; }
+    //    public DbSet<UserProfile> UserProfiles { get; set; }
+    //    public DbSet<Item> Items { get; set; }
+    //    public DbSet<Bid> Bids { get; set; }
 
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
-            //base.OnModelCreating(modelBuilder);
-            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
-        }
-    }
+    //    protected override void OnModelCreating(DbModelBuilder modelBuilder)
+    //    {
+    //        //base.OnModelCreating(modelBuilder);
+    //        modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+    //        modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
+    //    }
+    //}
 
     [Table("UserProfile")]
     public class UserProfile

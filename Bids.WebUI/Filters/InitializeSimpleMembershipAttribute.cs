@@ -5,6 +5,7 @@ using System.Threading;
 using System.Web.Mvc;
 using WebMatrix.WebData;
 using Bids.WebUI.Models;
+using Bids.WebUI.DAL;
 
 namespace Bids.WebUI.Filters
 {
@@ -25,11 +26,13 @@ namespace Bids.WebUI.Filters
         {
             public SimpleMembershipInitializer()
             {
-                Database.SetInitializer<UsersContext>(null);
+                //Database.SetInitializer<UsersContext>(null);
+                Database.SetInitializer<AuctionContext>(null);
 
                 try
                 {
-                    using (var context = new UsersContext())
+                    //using (var context = new UsersContext())
+                    using (var context = new AuctionContext())
                     {
                         if (!context.Database.Exists())
                         {

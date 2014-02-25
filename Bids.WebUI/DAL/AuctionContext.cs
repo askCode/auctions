@@ -11,6 +11,7 @@ namespace Bids.WebUI.DAL
     public class AuctionContext :DbContext
     {
         //public DbSet<Member> Members { get; set; }
+        public DbSet<UserProfile> UserProfiles { get; set; }
         public DbSet<Item> Items { get; set; }
         public DbSet<Bid> Bids { get; set; }
 
@@ -18,6 +19,7 @@ namespace Bids.WebUI.DAL
         {
             //base.OnModelCreating(modelBuilder);
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+            modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
         }
 
     }
