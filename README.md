@@ -15,6 +15,8 @@ this is what I want to try:
 - SimpleMembership
 - SimpleMembership within Models
 - Testing
+	- Using Mocks
+	- Using a temporary database
 
 ## References
 ### MVC
